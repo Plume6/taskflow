@@ -1,0 +1,40 @@
+{
+  "db_name": "PostgreSQL",
+  "query": "\n            SELECT \n                COUNT(*) as total,\n                COUNT(*) FILTER (WHERE status = 'pending') as pending,\n                COUNT(*) FILTER (WHERE status = 'in_progress') as in_progress,\n                COUNT(*) FILTER (WHERE status = 'completed') as completed\n            FROM tasks\n            WHERE user_id = $1\n            ",
+  "describe": {
+    "columns": [
+      {
+        "ordinal": 0,
+        "name": "total",
+        "type_info": "Int8"
+      },
+      {
+        "ordinal": 1,
+        "name": "pending",
+        "type_info": "Int8"
+      },
+      {
+        "ordinal": 2,
+        "name": "in_progress",
+        "type_info": "Int8"
+      },
+      {
+        "ordinal": 3,
+        "name": "completed",
+        "type_info": "Int8"
+      }
+    ],
+    "parameters": {
+      "Left": [
+        "Uuid"
+      ]
+    },
+    "nullable": [
+      null,
+      null,
+      null,
+      null
+    ]
+  },
+  "hash": "f3cb6f7d3f53a3ca80a9cf1ac2ae59f6b034a23ef37addc9302d6a29815cd87b"
+}

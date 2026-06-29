@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RustyExpress - 高性能任务管理系统</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部导航 -->
+        <header>
+            <div class="logo">
+                <span class="logo-icon">🦀</span>
+                <span class="logo-text">RustyExpress</span>
+                <span class="badge">高性能后端</span>
+            </div>
+            <nav>
+                <button id="logoutBtn" class="btn-logout" style="display: none;">退出登录</button>
+            </nav>
+        </header>
+
+        <!-- 主内容 -->
+        <main>
+            <!-- 未登录状态 - 显示登录/注册表单 -->
+            <div id="authSection" class="auth-section">
+                <div class="auth-tabs">
+                    <button class="tab-btn active" data-tab="login">登录</button>
+                    <button class="tab-btn" data-tab="register">注册</button>
+                </div>
+
+                <!-- 登录表单 -->
+                <div id="loginForm" class="auth-form active">
+                    <h2>欢迎回来</h2>
+                    <p class="subtitle">登录以管理你的任务</p>
+                    
+                    <div class="form-group">
+                        <label>邮箱</label>
+                        <input type="email" id="loginEmail" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" id="loginPassword" placeholder="******">
+                    </div>
+                    
+                    <button id="loginBtn" class="btn btn-primary">登录</button>
+                    
+                    <div class="demo-info">
+                        <p>演示账号：test@test.com / 123456</p>
+                    </div>
+                </div>
+
+                <!-- 注册表单 -->
+                <div id="registerForm" class="auth-form">
+                    <h2>创建账号</h2>
+                    <p class="subtitle">免费注册，开始使用</p>
+                    
+                    <div class="form-group">
+                        <label>用户名</label>
+                        <input type="text" id="regUsername" placeholder="用户名">
+                    </div>
+                    <div class="form-group">
+                        <label>邮箱</label>
+                        <input type="email" id="regEmail" placeholder="your@email.com">
+                    </div>
+                    <div class="form-group">
+                        <label>密码</label>
+                        <input type="password" id="regPassword" placeholder="至少6位">
+                    </div>
+                    
+                    <button id="registerBtn" class="btn btn-primary">注册</button>
+                </div>
+            </div>
+
+            <!-- 已登录状态 - 显示任务管理界面 -->
+            <div id="appSection" class="app-section" style="display: none;">
+                <!-- 用户信息栏 -->
+                <div class="user-info">
+                    <span class="greeting">你好，<span id="username">用户</span></span>
+                    <div class="stats-card">
+                        <div class="stat-item">
+                            <span class="stat-label">总计</span>
+                            <span class="stat-value" id="statTotal">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">待处理</span>
+                            <span class="stat-value pending" id="statPending">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">进行中</span>
+                            <span class="stat-value progress" id="statInProgress">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">已完成</span>
+                            <span class="stat-value completed" id="statCompleted">0</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- 创建任务表单 -->
+                <div class="create-task">
+                    <h3>创建新任务</h3>
+                    <div class="task-form">
+                        <input type="text" id="taskTitle" placeholder="任务标题" class="task-input">
+                        <textarea id="taskDesc" placeholder="任务描述（可选）" class="task-textarea"></textarea>
+                        <button id="createTaskBtn" class="btn btn-success">创建任务</button>
+                    </div>
+                </div>
+
+                <!-- 任务列表 -->
+                <div class="task-list-section">
+                    <h3>我的任务 <span id="taskCount" class="count-badge">0</span></h3>
+                    <div id="taskList" class="task-list">
+                        <!-- 动态生成任务列表 -->
+                        <div class="empty-state">暂无任务，创建一个吧！</div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 消息提示 -->
+        <div id="toast" class="toast"></div>
+    </div>
+
+    <script src="js/app.js"></script>
+</body>
+</html>

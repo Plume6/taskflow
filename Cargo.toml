@@ -1,0 +1,71 @@
+[package]
+name = "rustyexpress"
+version = "0.1.0"
+edition = "2021"
+authors = ["RustyExpress Team"]
+description = "A high-performance web backend built with Rust and Actix Web"
+
+[dependencies]
+# Web framework
+actix-web = "4.5"
+actix-rt = "2.9"
+actix-cors = "0.6"
+
+# Async runtime
+tokio = { version = "1.35", features = ["macros", "rt-multi-thread"] }
+
+# Database
+sqlx = { version = "0.7", features = [
+    "runtime-tokio-native-tls",
+    "postgres",
+    "chrono",
+    "uuid"
+] }
+
+# Configuration
+dotenv = "0.15"
+
+# Serialization
+serde = { version = "1", features = ["derive"] }
+serde_json = "1"
+
+# Time
+chrono = { version = "0.4", features = ["serde"] }
+
+# UUID
+uuid = { version = "1", features = ["v4", "serde"] }
+
+# Authentication
+argon2 = "0.5"
+jsonwebtoken = "9"
+
+# Error handling
+anyhow = "1"
+thiserror = "1"
+
+# Logging
+log = "0.4"
+env_logger = "0.10"
+
+# Regex
+regex = "1"
+
+# Lazy static
+once_cell = "1.19"
+
+# Password hashing
+bcrypt = "0.15"
+futures = "0.3.32"
+tracing-actix-web = "0.7.21"
+
+[profile.release]
+opt-level = 3
+lto = "thin"
+codegen-units = 1
+panic = "abort"
+
+[profile.dev]
+opt-level = 0
+debug = 1
+codegen-units = 16
+incremental = true

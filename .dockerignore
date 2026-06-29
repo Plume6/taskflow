@@ -1,0 +1,37 @@
+# Rust build artifacts
+target/
+**/*.rs.bk
+
+# Git
+.git/
+.gitignore
+
+# IDE
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# OS files
+.DS_Store
+Thumbs.db
+
+# Environment files (use .env for local, Docker Compose handles env vars)
+.env
+
+# Logs
+*.log
+
+# Docker files (avoid recursive build context issues)
+docker-compose*.yml
+Dockerfile*
+.dockerignore
+
+# SQLx offline data (keep for build; SQLX_OFFLINE=true in .cargo/config.toml)
+# DO NOT ignore .sqlx/ - needed for offline compilation
+
+# Cargo registry (not needed; built in container)
+.cargo/registry/
+
+# Temp
+/tmp/
