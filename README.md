@@ -44,7 +44,7 @@ chmod +x deploy.sh && ./deploy.sh
 
 ```bash
 # 1. 克隆项目
-git clone <你的仓库地址> rustyexpress
+git clone https://github.com/Plume6/rustyexpress rustyexpress
 cd rustyexpress
 
 # 2. 复制环境配置模板
